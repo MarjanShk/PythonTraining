@@ -25,3 +25,19 @@ class GroupHelper:
             wd = self.app.wd
             wd.find_element_by_link_text("Групи").click()
 
+    def delete(self):
+        wd = self.app.wd
+        wd.find_element_by_name("selected[]").click()
+        wd.find_element_by_name("delete").click()
+
+    def change(self, Group):
+        wd = self.app.wd
+        wd.find_element_by_xpath("//input[@title='Select (myGroup)']").click()
+        wd.find_element_by_name("edit").click()
+        wd.find_element_by_name("group_name").clear()
+        wd.find_element_by_name("group_name").send_keys(Group.name)
+        wd.find_element_by_name("group_header").clear()
+        wd.find_element_by_name("group_header").send_keys(Group.header)
+        wd.find_element_by_name("group_footer").clear()
+        wd.find_element_by_name("group_footer").send_keys(Group.footer)
+        wd.find_element_by_name("update").click()
